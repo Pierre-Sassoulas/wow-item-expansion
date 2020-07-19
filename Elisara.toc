@@ -1,5 +1,0 @@
-## Title: Elisara
-## Notes: Print extension of object in tooltip
-## Interface: 80205
-
-Elisara.lua

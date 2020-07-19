@@ -6,8 +6,6 @@ function ToolTipHook(t)
     end
 	local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount,
 		itemEquipLoc, itemIcon, vendorPrice, itemClassID, itemSubClassID, bindType, expacID, itemSetID, isCraftingReagent = GetItemInfo(link)
-	-- print(link)
-	-- print(expacID)
 	if expacID == 0 then
 		GameTooltip:AddLine("Vanilla")
 	elseif expacID == 1 then
