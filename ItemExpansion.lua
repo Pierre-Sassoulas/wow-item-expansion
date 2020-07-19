@@ -1,26 +1,47 @@
 
+function split(s, sep)
+    local fields = {}
+
+    local sep = sep or " "
+    local pattern = string.format("([^%s]+)", sep)
+    string.gsub(s, pattern, function(c) fields[#fields + 1] = c end)
+
+    return fields
+end
+
+
+
 function ToolTipHook(t)
 	local link = select(2, t:GetItem())
     if not link then
         return
     end
-	local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount,
-		itemEquipLoc, itemIcon, vendorPrice, itemClassID, itemSubClassID, bindType, expacID, itemSetID, isCraftingReagent = GetItemInfo(link)
-	if expacID == 0 then
+	local itemID = nil
+	for i,j in pairs(split(link,":")) do
+		if i==2 then
+			itemID = j
+		end
+	end
+	if not itemID then
+		return
+	end
+	itemID = tonumber(itemID)
+	-- print("itemID for ".. link .. " : " .. itemID)
+	if itemID < 20000 then
 		GameTooltip:AddLine("Vanilla")
-	elseif expacID == 1 then
+	elseif itemID < 40000 then
 		GameTooltip:AddLine("Burning crusade")
-	elseif expacID == 2 then
+	elseif itemID < 60000 then
 		GameTooltip:AddLine("Wrath of the lich king")
-	elseif expacID == 3 then
+	elseif itemID < 80000 then
 		GameTooltip:AddLine("Cataclysm")
-	elseif expacID == 4 then
+	elseif itemID < 100000 then
 		GameTooltip:AddLine("Mist of Pandaria")
-	elseif expacID == 5 then
+	elseif itemID < 120000 then
 		GameTooltip:AddLine("Warlord of Draenor")
-	elseif expacID == 6 then
+	elseif itemID < 140000 then
 		GameTooltip:AddLine("Legion")
-	elseif expacID == 7 then
+	else
 		GameTooltip:AddLine("Battle for azeroth")
 	end
 end

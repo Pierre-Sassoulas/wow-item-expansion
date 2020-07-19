@@ -1,6 +1,6 @@
 ## Interface: 80300
 ## X-Min-Interface: 80205
-## Version: 8.3.0_0.0.1
+## Version: 8.3.0_0.0.2
 ## Title: ItemExpansion
 ## Notes: Displays items expansions in item's tooltip in WOW
 
