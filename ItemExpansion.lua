@@ -1,48 +1,94 @@
 
-function split(s, sep)
-    local fields = {}
-
-    local sep = sep or " "
-    local pattern = string.format("([^%s]+)", sep)
-    string.gsub(s, pattern, function(c) fields[#fields + 1] = c end)
-
-    return fields
-end
-
-
-
 function ToolTipHook(t)
 	local link = select(2, t:GetItem())
+	
+	local TBCItems = {
+	["Field Repair Bot 110G"] = {color=1},
+	["Arcane Tome"] = {color=2},
+	["Fel Armament"] = {color=2},
+	["Mark of Sargeras"] = {color=1},
+	["Netherweb Spider Silk"] = {color=1},
+	["Netherweave Cloth"] = {color=1},
+	["Soul Essence"] = {color=1},
+	["Mote of Mana"] = {color=1},
+	["Primal Mana"] = {color=2}
+	}
+	
+	local WLKItems = {
+	["Tabard of the Explorer"] = {color=4}
+	}
+	
+	local CATItems = {
+	["Volatile Earth"] = {color=1}
+	}
+	
+	local PANItems = {
+	["Spirit of Harmony"] = {color=3},
+	["Mote of Harmony"] = {color=1}
+	}
+	
+	local WODItems = {
+	["Raw Beast Hide"] = {color=1},
+	["Primal Spirit"] = {color=2},
+	["Draenic Dust"] = {color=1},
+	["Aged Yolk"] = {color=1},
+	["Big Crate of Salvage"] = {color=2},
+	["Large Crate of Salvage"] = {color=2},
+	["Iron Horde Scraps"] = {color=1},
+	["Miner's Coffee"] = {color=2},
+	["Comprehensive Outpost Construction Guide"] = {color=3},
+	["Outpost Building Assembly Notes"] = {color=3},
+	["Rush Order: Shipyard"] = {color=1},
+	["Hearthstone Strategy Guide"] = {color=3},
+	["Supreme Manual of Dance"] = {color=3},
+	["War Ravaged Weaponry"] = {color=2},
+	["Weapon Enhancement Token"] = {color=2},
+	["Balanced Weapon Enhancement"] = {color=2},
+	["Braced Armor Enhancement"] = {color=2},
+	["Arakkoa Cipher"] = {color=2},
+	["Xelganak's Stinger"] = {color=4},
+	["Greater Draenic Agility Flask"] = {color=1},
+	["War Paints"] = {color=2},
+	["Alchemical Catalyst"] = {color=2},
+	["Draenic Seeds"] = {color=1},
+	["Rylak Egg"] = {color=1},
+	["True Iron Ore"] = {color=1},
+	["Blackrock Ore"] = {color=1},
+	["Draenic Stone"] = {color=1}
+	}
+	
+	local LEGItems = {
+	["Leyblood"] = {color=1},
+	["Shal'dorei Silk"] = {color=1},
+	["Restored Artifact"] = {color=1}
+	}
+	
+	local BFAItems = {}
+	
+	local SHLItems = {}
+	
     if not link then
         return
     end
-	local itemID = nil
-	for i,j in pairs(split(link,":")) do
-		if i==2 then
-			itemID = j
-		end
-	end
-	if not itemID then
-		return
-	end
-	itemID = tonumber(itemID)
-	-- print("itemID for ".. link .. " : " .. itemID)
-	if itemID < 20000 then
-		GameTooltip:AddLine("Vanilla")
-	elseif itemID < 40000 then
-		GameTooltip:AddLine("Burning crusade")
-	elseif itemID < 60000 then
-		GameTooltip:AddLine("Wrath of the lich king")
-	elseif itemID < 80000 then
-		GameTooltip:AddLine("Cataclysm")
-	elseif itemID < 100000 then
-		GameTooltip:AddLine("Mist of Pandaria")
-	elseif itemID < 120000 then
-		GameTooltip:AddLine("Warlord of Draenor")
-	elseif itemID < 140000 then
-		GameTooltip:AddLine("Legion")
-	else
-		GameTooltip:AddLine("Battle for azeroth")
+	local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount,
+		itemEquipLoc, itemIcon, vendorPrice, itemClassID, itemSubClassID, bindType, expacID, itemSetID, isCraftingReagent = GetItemInfo(link)
+	GameTooltip:AddLine("Item Rarity: " .. tostring(itemRarity), 1, 0, 1)
+	if expacID == 1 or TBCItems[itemName] and TBCItems[itemName].color == itemRarity then
+		GameTooltip:AddLine("The Burning Crusade", 0, 1, 1)
+	elseif expacID == 2 or WLKItems[itemName] and WLKItems[itemName].color == itemRarity then
+		GameTooltip:AddLine("Wrath Of The Lich King", 0, 1, 1)
+	elseif expacID == 3 or CATItems[itemName] and CATItems[itemName].color == itemRarity then
+		GameTooltip:AddLine("Cataclysm", 0, 1, 1)
+	elseif expacID == 4 or PANItems[itemName] and PANItems[itemName].color == itemRarity then
+		GameTooltip:AddLine("Mist Of Pandaria", 0, 1, 1)
+	elseif expacID == 5 or WODItems[itemName] and WODItems[itemName].color == itemRarity then
+		GameTooltip:AddLine("Warlords Of Draenor", 0, 1, 1)
+	elseif expacID == 6 or LEGItems[itemName] and LEGItems[itemName].color == itemRarity then
+		GameTooltip:AddLine("Legion", 0, 1, 1)
+	elseif expacID == 7 then
+		GameTooltip:AddLine("Battle For Azeroth", 0, 1, 1)
+	elseif expacID == 8 then
+		GameTooltip:AddLine("Shadowlands", 0, 1, 1)
 	end
 end
 
