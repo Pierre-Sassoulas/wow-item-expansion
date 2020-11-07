@@ -1,8 +1,5 @@
 
-function ToolTipHook(t)
-	local link = select(2, t:GetItem())
-	
-	local TBCItems = {
+TBCItems = {
 	["Field Repair Bot 110G"] = {color=1},
 	["Arcane Tome"] = {color=2},
 	["Fel Armament"] = {color=2},
@@ -12,22 +9,18 @@ function ToolTipHook(t)
 	["Soul Essence"] = {color=1},
 	["Mote of Mana"] = {color=1},
 	["Primal Mana"] = {color=2}
-	}
-	
-	local WLKItems = {
+}
+WLKItems = {
 	["Tabard of the Explorer"] = {color=4}
-	}
-	
-	local CATItems = {
+}
+CATItems = {
 	["Volatile Earth"] = {color=1}
-	}
-	
-	local PANItems = {
+}
+PANItems = {
 	["Spirit of Harmony"] = {color=3},
 	["Mote of Harmony"] = {color=1}
-	}
-	
-	local WODItems = {
+}
+WODItems = {
 	["Raw Beast Hide"] = {color=1},
 	["Primal Spirit"] = {color=2},
 	["Draenic Dust"] = {color=1},
@@ -55,24 +48,23 @@ function ToolTipHook(t)
 	["True Iron Ore"] = {color=1},
 	["Blackrock Ore"] = {color=1},
 	["Draenic Stone"] = {color=1}
-	}
-	
-	local LEGItems = {
+}
+LEGItems = {
 	["Leyblood"] = {color=1},
 	["Shal'dorei Silk"] = {color=1},
 	["Restored Artifact"] = {color=1}
-	}
-	
-	local BFAItems = {}
-	
-	local SHLItems = {}
-	
+}
+BFAItems = {}
+SHLItems = {}
+
+function ToolTipHook(t)
+	local link = select(2, t:GetItem())
     if not link then
         return
     end
 	local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount,
 		itemEquipLoc, itemIcon, vendorPrice, itemClassID, itemSubClassID, bindType, expacID, itemSetID, isCraftingReagent = GetItemInfo(link)
-	GameTooltip:AddLine("Item Rarity: " .. tostring(itemRarity), 1, 0, 1)
+	-- GameTooltip:AddLine("Item Rarity: " .. tostring(itemRarity), 1, 0, 1)
 	if expacID == 1 or TBCItems[itemName] and TBCItems[itemName].color == itemRarity then
 		GameTooltip:AddLine("The Burning Crusade", 0, 1, 1)
 	elseif expacID == 2 or WLKItems[itemName] and WLKItems[itemName].color == itemRarity then
