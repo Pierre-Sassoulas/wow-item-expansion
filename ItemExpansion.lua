@@ -58,13 +58,19 @@ BFAItems = {}
 SHLItems = {}
 
 function ToolTipHook(t)
-	local link = select(2, t:GetItem())
-    if not link then
+	-- Ignore vendor items.
+    if t["GetItem"] == nil then
         return
     end
-	local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount,
-		itemEquipLoc, itemIcon, vendorPrice, itemClassID, itemSubClassID, bindType, expacID, itemSetID, isCraftingReagent = GetItemInfo(link)
-
+	local link = select(2, t:GetItem())
+    
+	if not link then
+        return
+    end
+	
+	-- Zero indexed to lua standard one indexed (also used by 'EJ_GetTierInfo').
+    local expacID = select(15, GetItemInfo(link)) + 1
+    
 	local expacName = EJ_GetTierInfo(expacID)
     GameTooltip:AddLine(expacName, 0, 1, 1)
 end
