@@ -5,3 +5,4 @@
 ## Notes: Displays items expansions in item's tooltip in WOW
 
 ItemExpansion.lua
+exceptions.lua
