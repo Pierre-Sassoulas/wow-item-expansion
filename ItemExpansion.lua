@@ -72,12 +72,15 @@ function ToolTipHook(t, data)
         return
     end
 	
-	if not link then
-        return
-    end
-	
 	-- Zero indexed to lua standard one indexed (also used by 'EJ_GetTierInfo').
-    local expacID = select(15, GetItemInfo(link)) + 1
+	local expacID = select(15, GetItemInfo(link)) + 1
+	
+	-- Classic or info missing.
+    if expacID == 1 then
+        if expacID == nil then
+            return
+        end
+    end
     
 	local expacName = EJ_GetTierInfo(expacID)
     GameTooltip:AddLine(expacName, 0, 1, 1)
