@@ -64,24 +64,9 @@ function ToolTipHook(t)
     end
 	local itemName, itemLink, itemRarity, itemLevel, itemMinLevel, itemType, itemSubType, itemStackCount,
 		itemEquipLoc, itemIcon, vendorPrice, itemClassID, itemSubClassID, bindType, expacID, itemSetID, isCraftingReagent = GetItemInfo(link)
-	-- GameTooltip:AddLine("Item Rarity: " .. tostring(itemRarity), 1, 0, 1)
-	if expacID == 1 or TBCItems[itemName] and TBCItems[itemName].color == itemRarity then
-		GameTooltip:AddLine("The Burning Crusade", 0, 1, 1)
-	elseif expacID == 2 or WLKItems[itemName] and WLKItems[itemName].color == itemRarity then
-		GameTooltip:AddLine("Wrath Of The Lich King", 0, 1, 1)
-	elseif expacID == 3 or CATItems[itemName] and CATItems[itemName].color == itemRarity then
-		GameTooltip:AddLine("Cataclysm", 0, 1, 1)
-	elseif expacID == 4 or PANItems[itemName] and PANItems[itemName].color == itemRarity then
-		GameTooltip:AddLine("Mist Of Pandaria", 0, 1, 1)
-	elseif expacID == 5 or WODItems[itemName] and WODItems[itemName].color == itemRarity then
-		GameTooltip:AddLine("Warlords Of Draenor", 0, 1, 1)
-	elseif expacID == 6 or LEGItems[itemName] and LEGItems[itemName].color == itemRarity then
-		GameTooltip:AddLine("Legion", 0, 1, 1)
-	elseif expacID == 7 then
-		GameTooltip:AddLine("Battle For Azeroth", 0, 1, 1)
-	elseif expacID == 8 then
-		GameTooltip:AddLine("Shadowlands", 0, 1, 1)
-	end
+
+	local expacName = EJ_GetTierInfo(expacID)
+    GameTooltip:AddLine(expacName, 0, 1, 1)
 end
 
-GameTooltip:HookScript("OnTooltipSetItem", ToolTipHook)
+TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, ToolTipHook)
