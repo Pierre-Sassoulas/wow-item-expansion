@@ -59,13 +59,19 @@ ItemExpansion_G.LEGItems = {
 ItemExpansion_G.BFAItems = {}
 ItemExpansion_G.SHLItems = {}
 
-function ToolTipHook(t)
+function ToolTipHook(t, data)
 	-- Ignore vendor items.
     if t["GetItem"] == nil then
         return
     end
 	local link = select(2, t:GetItem())
     
+	-- Item 'data["hyperlink"]' exists (not nil) on the first item load only,
+    -- so no double show happens.
+    if not link or data["hyperlink"] then
+        return
+    end
+	
 	if not link then
         return
     end
