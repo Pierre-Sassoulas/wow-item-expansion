@@ -1,5 +1,7 @@
+-- Global locals.
+ItemExpansion_G = {}
 
-TBCItems = {
+ItemExpansion_G.TBCItems = {
 	["Field Repair Bot 110G"] = {color=1},
 	["Arcane Tome"] = {color=2},
 	["Fel Armament"] = {color=2},
@@ -10,17 +12,17 @@ TBCItems = {
 	["Mote of Mana"] = {color=1},
 	["Primal Mana"] = {color=2}
 }
-WLKItems = {
+ItemExpansion_G.WLKItems = {
 	["Tabard of the Explorer"] = {color=4}
 }
-CATItems = {
+ItemExpansion_G.CATItems = {
 	["Volatile Earth"] = {color=1}
 }
-PANItems = {
+ItemExpansion_G.PANItems = {
 	["Spirit of Harmony"] = {color=3},
 	["Mote of Harmony"] = {color=1}
 }
-WODItems = {
+ItemExpansion_G.WODItems = {
 	["Raw Beast Hide"] = {color=1},
 	["Primal Spirit"] = {color=2},
 	["Draenic Dust"] = {color=1},
@@ -49,13 +51,13 @@ WODItems = {
 	["Blackrock Ore"] = {color=1},
 	["Draenic Stone"] = {color=1}
 }
-LEGItems = {
+ItemExpansion_G.LEGItems = {
 	["Leyblood"] = {color=1},
 	["Shal'dorei Silk"] = {color=1},
 	["Restored Artifact"] = {color=1}
 }
-BFAItems = {}
-SHLItems = {}
+ItemExpansion_G.BFAItems = {}
+ItemExpansion_G.SHLItems = {}
 
 function ToolTipHook(t)
 	-- Ignore vendor items.
