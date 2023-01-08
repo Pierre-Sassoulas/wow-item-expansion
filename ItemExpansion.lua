@@ -20,7 +20,7 @@ function ToolTipHook(t, data)
 	-- Classic or info missing.
 	if expacID == 1 then
 		local itemID = GetItemInfoFromHyperlink(link)
-		expacID = ItemExpansionMine_G.exceptions[itemID]
+		expacID = ItemExpansion_G.exceptions[itemID]
 		if expacID == nil then
 			return
 		end

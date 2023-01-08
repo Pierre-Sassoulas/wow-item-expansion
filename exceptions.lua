@@ -1,6 +1,6 @@
 
 -- { [itemID] = expansionNumber }
-ItemExpansionMine_G.exceptions = {
+ItemExpansion_G.exceptions = {
     [49040] = 3  -- Jeeves
 }
 
