@@ -1,7 +1,8 @@
-## Interface: 90001
+## Interface: 100002
 ## X-Min-Interface: 80205
-## Version: 9.0.1_0.0.3
+## Version: 10.0.0
 ## Title: ItemExpansion
 ## Notes: Displays items expansions in item's tooltip in WOW
 
 ItemExpansion.lua
+exceptions.lua
