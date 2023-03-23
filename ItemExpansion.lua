@@ -15,13 +15,12 @@ function ToolTipHook(t, data)
 		return
 	end
 
-	-- Zero indexed to lua standard one indexed (also used by 'EJ_GetTierInfo').
-	local expacID = select(15, GetItemInfo(itemID)) + 1
-
-	-- Classic or info missing.
-	if expacID == 1 then
-		expacID = ItemExpansion_G.exceptions[itemID]
-		if expacID == nil then
+	local expacID = ItemExpansion_G.exceptions[itemID]
+	if expacID == nil then
+		-- Zero indexed to lua standard one indexed (also used by 'EJ_GetTierInfo').
+		expacID = select(15, GetItemInfo(itemID)) + 1
+		-- Classic or info missing. Here, so `exceptions` can allow "Classic".
+		if expacID == 1 or expacID == nil then
 			return
 		end
 	end
