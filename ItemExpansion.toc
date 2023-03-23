@@ -1,6 +1,5 @@
-## Interface: 100002
-## X-Min-Interface: 80205
-## Version: 10.0.0
+## Interface: 100007
+## Version: 10.0.7_0.0.5
 ## Title: ItemExpansion
 ## Notes: Displays items expansions in item's tooltip in WOW
 
